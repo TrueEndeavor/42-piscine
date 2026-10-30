@@ -1,0 +1,2 @@
+#! /bin/bash
+cat /etc/passwd | grep --invert-match '^#'  | sed '1~2d' | rev | sort -r | head -n $FT_LINE2 | tail -n $(($FT_LINE2-$FT_LINE1+1)) | awk -F: '{print $7}' | sed ':a;N;$!ba;s/\n/, /g' | sed 's/$/\./' 
